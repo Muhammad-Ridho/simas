@@ -4,9 +4,9 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        <!-- <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link active">SYSTEM PP. YATIM DHUAFA AL-KHLAS SINGOSARI</a>
-        </li>
+        </li> -->
     </ul>
 
     <!-- Right navbar links -->
@@ -18,13 +18,13 @@
 
         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                <img src="../../dist/img/user1-128x128.jpg" class="user-image" alt="User Image">
                 <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
 
                 <li class="user-header">
-                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="../../dist/img/user1-128x128.jpg" class="img-circle" alt="User Image">
                     <p>
                         {{ Auth::user()->name }}
                         <small>Role User</small>

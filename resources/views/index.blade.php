@@ -46,7 +46,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>00</h3>
+                        <h3>{{ Auth::user()->count() }}</h3>
 
                         <p>Total Users</p>
                     </div>

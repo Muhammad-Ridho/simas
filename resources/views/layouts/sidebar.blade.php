@@ -12,20 +12,20 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
+                <a href="/users" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
                     <p>Users Management</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/asset-management" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                     <p>Asset Management</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
+                <i class="nav-icon fas fa-book"></i>
                     <p>Asset Report</p>
                 </a>
             </li>

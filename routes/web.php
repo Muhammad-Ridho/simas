@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::resource('/users', [App\Http\Controllers\UsersController::class]);
+Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
+Route::get('/add-users', [App\Http\Controllers\UsersController::class, 'create'])->name('add-users');
+
+Route::get('/asset-management', [App\Http\Controllers\AssetManagementController::class, 'index'])->name('aset');
