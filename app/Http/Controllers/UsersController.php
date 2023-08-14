@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon;
+use Session;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -12,7 +17,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->paginate(5);
+        $users = User::orderBy('id','desc')->simplePaginate(5);
 
         return view('admin.users.index', compact('users'));
     }
@@ -29,8 +34,21 @@ class UsersController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {       
+
+        $this->validate($request, [
+            'name'   => 'required|string',
+            'email'  => 'required|string'
+        ]);
+
+        User::create([
+            'name'   => $request->get('name'),
+            'level'   => $request->get('level'),
+            'email'   => $request->get('email'),
+            'password'   => $request->get('password'),            
+        ]);
+ 
+        return redirect()->route('users.index')->with('message', 'Data Users baru berhasil ditambahkan.');
     }
 
     /**
@@ -46,7 +64,7 @@ class UsersController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.users.edit');
     }
 
     /**
@@ -54,14 +72,26 @@ class UsersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'level' => 'required',
+            'email' => 'required',
+            // 'password' => 'required'
+        ]);
+        
+        $users->fill($request->post())->save();
+ 
+        return redirect()->route('users.index')->with('success','Users Has Been updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $users)
     {
-        //
+        $users->delete();
+
+        return redirect()->route('users.index')->with('success','Users has been deleted successfully');
+    
     }
 }

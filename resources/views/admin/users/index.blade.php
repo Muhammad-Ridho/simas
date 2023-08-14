@@ -22,7 +22,7 @@
                 <div class="container">
                     <div class="row row-cols-2">
                         <div class="col-sm-8">
-                            <a href="/add-users" class="btn btn-primary">
+                            <a href="{{ route('users.create') }}" class="btn btn-primary">
                                 <i class="fas fa-plus"></i>
                                 {{ __(' Tambah Data') }}
                             </a>
@@ -37,32 +37,49 @@
                 </div>
             </div>
             <div class="card-body">
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+                @endif
+
                 <table class=" table table-bordered table-hover">
                     <thead>
                         <tr class="header table-success text-center">
                             <th scope="col ">No</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Role</th>
+                            <th scope="col">level</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $no = 0; ?>
                         @foreach ($users as $user)
+                        <?php $no++; ?>
                         <tr>
-                            <th class="text-center" scope="row" width="50px">{{ $user->id }}</th>
+                            <th class="text-center" scope="row" width="50px">{{ $no }}</th>
                             <td>{{ $user->name }}</td>
-                            <td class="text-center">role</td>
+                            <td class="text-center">{{ $user->level }}</td>
                             <td class="col-sm-2 text-center">
-                                <div class="btn-group" role="group" aria-label="Basic outlined">
-                                    <button type="button" class="btn btn-outline-primary"><i class="fas fa-eye"></i></button>
-                                    <button type="button" class="btn btn-outline-warning"><i class="fas fa-edit"></i></button>
-                                    <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
-                                </div>
+                                <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="btn-group" role="group" aria-label="Basic outlined">
+                                        <a href="#" type="button" class="btn btn-outline-primary"><i
+                                                class="fas fa-eye"></i></a>
+                                        <a href="#" type="button" class="btn btn-outline-warning"><i
+                                                class="fas fa-edit"></i></a>
+                                        <button type="submit" class="btn btn-outline-danger"><i
+                                                class="fas fa-trash"></i></button>
+                                    </div>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="card-body">
                 {{ $users->links() }}
             </div>
         </div>

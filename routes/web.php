@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\LokasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +22,28 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// \San\Crud\Crud::routes(); 
 
-// Route::resource('/users', [App\Http\Controllers\UsersController::class]);
-Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
-Route::get('/add-users', [App\Http\Controllers\UsersController::class, 'create'])->name('add-users');
 
 Route::get('/asset-management', [App\Http\Controllers\AssetManagementController::class, 'index'])->name('aset');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::resource('users', UsersController::class);
+
+    Route::resource('departments', DepartmentController::class);
+
+    Route::resource('lokasis', LokasiController::class);
+
+    // Route::middleware('role:Admin')->group(function () {
+    //     Route::resource('users', UserController::class);
+    //     Route::resource('roles', RoleController::class);
+    //     Route::resource('categories', CategoryController::class);
+
+    //     Route::prefix('dropdown')->controller(DropdownController::class)->as('dropdown.')->group(function () {
+    //         Route::get('roles', 'getRoles')->name('roles');
+    //         Route::get('farmers', 'getFarmers')->name('farmers');
+    //     });
+    // });
+});
