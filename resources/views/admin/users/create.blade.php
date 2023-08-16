@@ -25,7 +25,8 @@
                         <div class="row mb-3 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
-                                <input id="name" name="name" type="text" class="form-control" value="{{ old('name')}}" data-mask>
+                                <input id="name" name="name" type="text" class="form-control" value="{{ old('name')}}"
+                                    data-mask>
                                 @if ($errors->has('name'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('name') }}</strong>
@@ -48,7 +49,8 @@
                         <div class="row mb-3 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <input id="email" name="email" type="email" class="form-control" value="{{ old('email')}}" data-mask>
+                                <input id="email" name="email" type="email" class="form-control"
+                                    value="{{ old('email')}}" data-mask>
                                 @if ($errors->has('email'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('email') }}</strong>
@@ -59,13 +61,26 @@
                         <div class="row mb-3 form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
-                                <input type="password" name="password" class="form-control" id="password" value="{{ old('password')}}"
-                                    data-mask>
+                                <input type="password" name="password" class="form-control" id="password"
+                                    value="{{ old('password')}}" data-mask>
                                 @if ($errors->has('password'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('password') }}</strong>
                                 </span>
                                 @endif
+                            </div>
+                        </div>
+                        <div class="row mb-3 form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-sm-2 col-form-label">Img</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="uploads" name="image" id="image" aria-describedby="inputGroup" aria-label="Upload" required>
+
+                                @if ($errors->has('img'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('img') }}</strong>
+                                </span>
+                                @endif
+                                
                             </div>
                         </div>
 
@@ -92,7 +107,7 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 function readURL() {
     var input = this;
     if (input.files && input.files[0]) {
@@ -110,5 +125,5 @@ $(function() {
         return false
     })
 })
-</script> -->
+</script>
 @stop

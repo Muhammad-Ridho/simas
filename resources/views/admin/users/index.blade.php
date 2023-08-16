@@ -47,6 +47,7 @@
                     <thead>
                         <tr class="header table-success text-center">
                             <th scope="col ">No</th>
+                            <th scope="col">Img</th>
                             <th scope="col">Name</th>
                             <th scope="col">level</th>
                             <th scope="col">Action</th>
@@ -58,6 +59,9 @@
                         <?php $no++; ?>
                         <tr>
                             <th class="text-center" scope="row" width="50px">{{ $no }}</th>
+                            <th class="text-center" scope="row">
+                                <img src="{{ Storage::url($user->img) }}" alt="{{ $user->name }}" >
+                            </th>
                             <td>{{ $user->name }}</td>
                             <td class="text-center">{{ $user->level }}</td>
                             <td class="col-sm-2 text-center">

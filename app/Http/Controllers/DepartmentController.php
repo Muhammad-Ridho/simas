@@ -58,9 +58,9 @@ class DepartmentController extends Controller {
 		$department->keterangan = $request->keterangan;
             $department->save();
 
-            return redirect()->route('admin.departments.index', [])->with('success', __('Department created successfully.'));
+            return redirect()->route('departments.index', [])->with('success', __('Department created successfully.'));
         } catch (\Throwable $e) {
-            return redirect()->route('admin.departments.create', [])->withInput($request->input())->withErrors(['error' => $e->getMessage()]);
+            return redirect()->route('departments.create', [])->withInput($request->input())->withErrors(['error' => $e->getMessage()]);
         }
     }
 
@@ -122,9 +122,9 @@ class DepartmentController extends Controller {
         try {
             $department->delete();
 
-            return redirect()->route('admin.departments.index', [])->with('success', __('Department deleted successfully'));
+            return redirect()->route('departments.index', [])->with('success', __('Department deleted successfully'));
         } catch (\Throwable $e) {
-            return redirect()->route('admin.departments.index', [])->with('error', 'Cannot delete Department: ' . $e->getMessage());
+            return redirect()->route('departments.index', [])->with('error', 'Cannot delete Department: ' . $e->getMessage());
         }
     }
 

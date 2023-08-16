@@ -29,7 +29,7 @@ class LokasiController extends Controller {
 
         $lokasi = $lokasi->paginate(10);
 
-        return view('lokasis.index', compact('lokasi'));
+        return view('admin.lokasis.index', compact('lokasi'));
     }
 
     /**
@@ -41,7 +41,7 @@ class LokasiController extends Controller {
 
         $departments = \App\Models\Department::all();
 
-        return view('lokasis.create', compact('departments'));
+        return view('admin.lokasis.create', compact('departments'));
     }
 
     /**
@@ -59,7 +59,7 @@ class LokasiController extends Controller {
 
             $lokasi = new Lokasi();
             $lokasi->name = $request->name;
-		$lokasi->department_id = $request->department_id;
+		    $lokasi->department_id = $request->department_id;
             $lokasi->save();
 
             return redirect()->route('lokasis.index', [])->with('success', __('Lokasi created successfully.'));
@@ -77,7 +77,7 @@ class LokasiController extends Controller {
      */
     public function show(Lokasi $lokasi,) {
 
-        return view('lokasis.show', compact('lokasi'));
+        return view('admin.lokasis.show', compact('lokasi'));
     }
 
     /**
@@ -91,7 +91,7 @@ class LokasiController extends Controller {
 
         $departments = \App\Models\Department::all();
 
-        return view('lokasis.edit', compact('lokasi', 'departments'));
+        return view('admin.lokasis.edit', compact('lokasi', 'departments'));
     }
 
     /**
